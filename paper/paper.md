@@ -47,6 +47,18 @@ can be reused in two other scripts, resulting in two patches:
 * [scholia/commit/20152877efed739abf4c433bd38e3646371d51aa](https://github.com/egonw/scholia/commit/20152877efed739abf4c433bd38e3646371d51aa)
 * [scholia/commit/e7b71d97be19745190d1211db69426a0a89b300c](https://github.com/egonw/scholia/commit/e7b71d97be19745190d1211db69426a0a89b300c)
 
+These patches define and use a constant in `query.py`:
+
+```python
+SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
+```
+
+It can be imported in other Python scripts, e.g. `scrape/ceurws.py`, with something like:
+
+```python
+from ..query import iso639_to_q, SPARQL_ENDPOINT as WDQS_URL
+```
+
 # Discussion
 
 ...
