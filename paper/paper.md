@@ -7,8 +7,7 @@ authors:
   - name: Egon Willighagen
     orcid: 0000-0001-7542-0286
     affiliation: 1
-  - name: 
-    affiliation: 1
+  - name: no one else
 affiliations:
   - name: Maastricht University
     index: 1
@@ -23,14 +22,14 @@ group: Hacking Scholia
 git_url: https://github.com/egonw/swat4hcls-2023--custom-scholia
 # This is the short authors description that is used at the
 # bottom of the generated paper (typically the first two authors):
-authors_short: First Author \emph{et al.}
+authors_short: Egon Willighagen
 ---
 
 
 # Introduction
 
-As part of the SWAT4HCLS hackathon we set out to generalize the Scholia platform so that
-it can be run on other SPARQL endpoints. We specifically had these goals:
+As part of the SWAT4HCLS hackathon we set out to generalize the Scholia platform [@citoExtends:Nielsen2017Scholia]
+so that it can be run on other SPARQL endpoints. We specifically had these goals:
 
 * make the SPARQL endpoint configurable (e.g. support the Virtuoso instance)
 * allow configuring which aspects to show
@@ -41,7 +40,12 @@ it can be run on other SPARQL endpoints. We specifically had these goals:
 
 # Results
 
-For the first goal, ...
+For the first goal, reducing the number of times the URL of the SPARQL endpoint is explicitly given,
+we identified how it is used in various Python files. It turns out that a global constance in `query.py`
+can be reused in two other scripts, resulting in two patches:
+
+* https://github.com/egonw/scholia/commit/20152877efed739abf4c433bd38e3646371d51aa
+* https://github.com/egonw/scholia/commit/e7b71d97be19745190d1211db69426a0a89b300c
 
 # Discussion
 
