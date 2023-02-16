@@ -117,6 +117,47 @@ One aspect that this needs to take into account is that more specific aspects ar
 general aspects. For example, a chemical can be opened `topic` aspect but preferably in the `chemical`
 aspect.
 
+We were able to extract the class-aspect mappings into a separated JSON file that looks like this:
+
+```json
+{
+  "author": { "P31": { "Q5": "author" } },
+  "clinical_trial": { "P31": { "Q30612": "clinical trial" } },
+  "series": { "P31": {
+    "Q277759":   "book series",
+    "Q2217301":  "serial (publication series)",
+    "Q27785883": "conference proceedings series" }
+  },
+  "venue": { "P31": { 
+    "Q41298":   "magazine",
+    "Q737498":  "academic journal",
+    "Q5633421": "scientific journal",
+    "Q1143604": "proceedings" }
+  },
+  "sponsor": { "P31": { 
+    "Q157031":   "foundation",
+    "Q10498148": "research council" }
+  },
+  "publisher": { "P31": { 
+    "Q2085381": "publisher",
+    "Q479716":  "university publisher" }
+  },
+  "protein": { "P31": { "Q8054": "protein" } }
+}
+```
+
+In Python we can then use this data to do the matching with:
+
+```python
+matching_data = loads(open(join(abspath(getcwd()), "scholia/matching_data.json"), "rb").read())
+for aspect in matching_data:
+    if set(classes).intersection(set(matching_data[aspect]['P31'].keys())):
+        class_ = aspect # should it stop early instead?
+```
+
+The matching patch:
+
+* [scholia/commit/8ff64dee13940ad28fd5d7dd97ad4bdc2d2628b4](https://github.com/egonw/scholia/commit/8ff64dee13940ad28fd5d7dd97ad4bdc2d2628b4)
 
 # Discussion
 
