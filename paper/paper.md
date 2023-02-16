@@ -92,7 +92,24 @@ def show_chemical(q):
 ```
 
 Removing unwanted aspects therefore boils down to commenting out routes and updating the `q_to_class()`
-method.
+method. This takes us to Task 3.
+
+## Task 3
+
+The `q_to_class()` method applies the mapping in two steps. First, it uses the SPARQL endpoint to ask
+for all classes (`P31` in Wikidata`) for the given `q` (the QID of the item). In the second step, it
+compares the returns classes with a local map. For example, for books this second step looks like:
+
+```python
+if set(classes).intersection([
+    'Q277759',  # book series
+    'Q2217301',  # serial (publication series)
+    'Q27785883',  # conference proceedings series
+]):
+class_ = 'series'
+```
+The intention of this task was to extract these mapping into a separate configurable mapping file.
+
 
 # Discussion
 
