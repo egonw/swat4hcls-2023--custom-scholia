@@ -28,7 +28,7 @@ authors_short: Egon Willighagen
 
 # Introduction
 
-As part of the SWAT4HCLS hackathon we set out to generalize the Scholia platform [@extends:Nielsen2017Scholia]
+As part of the SWAT4HCLS hackathon we set out to generalize the Scholia platform [@extends:discusses:Nielsen2017Scholia]
 so that it can be run on other SPARQL endpoints. We specifically had these goals:
 
 * make the SPARQL endpoint configurable (e.g. support the Virtuoso instance)
@@ -40,7 +40,9 @@ so that it can be run on other SPARQL endpoints. We specifically had these goals
 
 # Results
 
-For the first goal, reducing the number of times the URL of the SPARQL endpoint is explicitly given,
+## Task 1
+
+For the first task, reducing the number of times the URL of the SPARQL endpoint is explicitly given,
 we identified how it is used in various Python files. It turns out that a global constance in `query.py`
 can be reused in two other scripts, resulting in two patches:
 
@@ -58,6 +60,39 @@ It can be imported in other Python scripts, e.g. `scrape/ceurws.py`, with someth
 ```python
 from ..query import iso639_to_q, SPARQL_ENDPOINT as WDQS_URL
 ```
+
+## Task 2
+
+The second task, the configuring of the aspects to support, requires tweaking the landing pages
+and the routing. This may be hard to configure and require editing HTML pages and `views.py`.
+This Python script uses routes to link URL patterns to Python code, with snippets that look like
+this:
+
+```python
+@main.route("/" + q_pattern)
+def redirect_q(q):
+    class_ = q_to_class(q)
+    method = 'app.show_' + class_
+    return redirect(url_for(method, q=q), code=302)
+```
+
+This example looks up the matching Scholia aspect for the given Wikidata item. But there are
+also routes for each aspect, which look like this:
+
+```python
+@main.route('/chemical/' + q_pattern)
+def show_chemical(q):
+    entities = wb_get_entities([q])
+    smiles = entity_to_smiles(entities[q])
+    return render_template(
+        'chemical.html',
+        q=q,
+        smiles=smiles,
+        third_parties_enabled=current_app.third_parties_enabled)
+```
+
+Removing unwanted aspects therefore boils down to commenting out routes and updating the `q_to_class()`
+method.
 
 # Discussion
 
