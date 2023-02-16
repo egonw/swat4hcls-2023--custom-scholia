@@ -108,7 +108,14 @@ if set(classes).intersection([
 ]):
 class_ = 'series'
 ```
-The intention of this task was to extract these mapping into a separate configurable mapping file.
+
+Similarly, there is a method that looks at superclasses (via `P279` in Wikidata). That maps Wikidata
+items via one of the superclasses to the Scholia aspect. The intention of this task was to extract
+these mapping into a separate configurable mapping file.
+
+One aspect that this needs to take into account is that more specific aspects are prefered over more
+general aspects. For example, a chemical can be opened `topic` aspect but preferably in the `chemical`
+aspect.
 
 
 # Discussion
