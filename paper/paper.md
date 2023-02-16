@@ -44,8 +44,8 @@ For the first goal, reducing the number of times the URL of the SPARQL endpoint 
 we identified how it is used in various Python files. It turns out that a global constance in `query.py`
 can be reused in two other scripts, resulting in two patches:
 
-* https://github.com/egonw/scholia/commit/20152877efed739abf4c433bd38e3646371d51aa
-* https://github.com/egonw/scholia/commit/e7b71d97be19745190d1211db69426a0a89b300c
+* [scholia/commit/20152877efed739abf4c433bd38e3646371d51aa](https://github.com/egonw/scholia/commit/20152877efed739abf4c433bd38e3646371d51aa)
+* [scholia/commit/e7b71d97be19745190d1211db69426a0a89b300c](https://github.com/egonw/scholia/commit/e7b71d97be19745190d1211db69426a0a89b300c)
 
 # Discussion
 
