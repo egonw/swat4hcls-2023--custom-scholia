@@ -149,9 +149,13 @@ We were able to extract the class-aspect mappings into a separated JSON file tha
 In Python we can then use this data to do the matching with:
 
 ```python
-matching_data = loads(open(join(abspath(getcwd()), "scholia/matching_data.json"), "rb").read())
+matching_data = loads(open(
+    join(abspath(getcwd()), "scholia/matching_data.json"),
+    "rb").read()
+)
 for aspect in matching_data:
-    if set(classes).intersection(set(matching_data[aspect]['P31'].keys())):
+    if set(classes).intersection(
+       set(matching_data[aspect]['P31'].keys())):
         class_ = aspect # should it stop early instead?
 ```
 
