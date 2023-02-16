@@ -28,7 +28,7 @@ authors_short: Egon Willighagen
 
 # Introduction
 
-As part of the SWAT4HCLS hackathon we set out to generalize the Scholia platform [@citoExtends:Nielsen2017Scholia]
+As part of the SWAT4HCLS hackathon we set out to generalize the Scholia platform [@extends:Nielsen2017Scholia]
 so that it can be run on other SPARQL endpoints. We specifically had these goals:
 
 * make the SPARQL endpoint configurable (e.g. support the Virtuoso instance)
