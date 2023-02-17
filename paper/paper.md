@@ -33,7 +33,7 @@ authors_short: Egon Willighagen
 
 As part of the SWAT4HCLS hackathon we set out to generalize the Scholia platform [@extends:discusses:Nielsen2017Scholia]
 so that it can be run on other SPARQL endpoints. Example other endpoints fall in various categories with increasing needs
-of the generalization of Scholia. Simplest are the Wikidata subsets [XXXX] which use the same classes and properties as
+of the generalization of Scholia. Simplest are the Wikidata subsets [@citesAsAuthority:LabraGayo2022] which use the same classes and properties as
 Wikidata. More difficult is a custom Wikibase, where identical classes and properties between Wikidata and the Wikibase
 have different identifiers and a mapping is needed. A third application is to run the custom Scholia version on top
 of the Wikidata but hosted with different triple store software. In this case SPARQL queries may need updating for removal
@@ -183,10 +183,25 @@ The matching patch:
 
 # Discussion
 
-...
+With three out of four tasks done, the hackathon was more productive than originally planned. Task 3 is not
+complete and only outlines the (tested) approach, but does not move of class-aspect mappings outside the
+Python code. With these steps done, we learned how the Scholia software can be repurposed for other SPARQL
+endpoint and have an idea on how much effort would be needed to do so. Furthermore, the refactoring in the
+first task benefits the maintainability of the Scholia software itself (Task 1).
 
-## Acknowledgements
+With these patches, it is clear that Scholia can be used to run on a copy of Wikidata or subset of Wikidata
+using the same Blazegraph SPARQL endpoint software. We also learned how we can select which aspects the Scholia
+customization runs, by changing the routing in `views.py` (Task 2) and changing the mapping of classes to aspect
+(Task 3). The explored factoring out of of the class-aspect mappings will make the second type of customizations
+more transparent.
 
-...
+The fourth task, however, requires more effort. This feature is relevant when using custom Wikibases with
+similar content as Wikidata, e.g. filled with chemical compounds. Then, the Scholia aspect `/chemical/` can
+be reused, but only if we map Wikidata classes and properties to that in the Wikibase. This idea has already
+been implemented in the Bacting-based tool [@Willighagen2021Bacting] to add chemicals to Wikidata
+(see [createWDitemsFromSMILES.groovy](https://github.com/egonw/ons-wikidata/blob/master/Wikidata/createWDitemsFromSMILES.groovy)).
+The idea here is that if Scholia uses this approach too, then Wikidata SPARQL queries for the content
+of Scholia aspects can be translated to the equivalent queries for the Wikibase. But this idea remains to be
+demonstrated.
 
 ## References
