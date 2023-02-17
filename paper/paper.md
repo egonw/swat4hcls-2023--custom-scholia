@@ -198,7 +198,7 @@ more transparent.
 The fourth task, however, requires more effort. This feature is relevant when using custom Wikibases with
 similar content as Wikidata, e.g. filled with chemical compounds. Then, the Scholia aspect `/chemical/` can
 be reused, but only if we map Wikidata classes and properties to that in the Wikibase. This idea has already
-been implemented in the Bacting-based tool [@Willighagen2021Bacting] to add chemicals to Wikidata
+been implemented in the Bacting-based tool [@citesAsAuthority:Willighagen2021Bacting] to add chemicals to Wikidata
 (see [createWDitemsFromSMILES.groovy](https://github.com/egonw/ons-wikidata/blob/master/Wikidata/createWDitemsFromSMILES.groovy)).
 The idea here is that if Scholia uses this approach too, then Wikidata SPARQL queries for the content
 of Scholia aspects can be translated to the equivalent queries for the Wikibase. But this idea remains to be
