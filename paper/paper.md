@@ -8,10 +8,13 @@ authors:
     orcid: 0000-0001-7542-0286
     affiliation: 1
   - name: no one else
+    affiliation: 2
 affiliations:
   - name: Maastricht University
     index: 1
-date: 16 February 2023
+  - name: Unseen University
+    index: 2
+date: 17 February 2023
 cito-bibliography: paper.bib
 event: SWAT4HCLS23
 biohackathon_name: "SWAT4HCLS"
@@ -29,16 +32,31 @@ authors_short: Egon Willighagen
 # Introduction
 
 As part of the SWAT4HCLS hackathon we set out to generalize the Scholia platform [@extends:discusses:Nielsen2017Scholia]
-so that it can be run on other SPARQL endpoints. We specifically had these goals:
+so that it can be run on other SPARQL endpoints. Example other endpoints fall in various categories with increasing needs
+of the generalization of Scholia. Simplest are the Wikidata subsets [XXXX] which use the same classes and properties as
+Wikidata. More difficult is a custom Wikibase, where identical classes and properties between Wikidata and the Wikibase
+have different identifiers and a mapping is needed. A third application is to run the custom Scholia version on top
+of the Wikidata but hosted with different triple store software. In this case SPARQL queries may need updating for removal
+of Wikidata-specific query constructs.
+
+A last use case which will require development from scratch of much of the Scholia
+content. For example, when using the Scholia concept on independent RDF datasets. The latter is far outside the scope of
+this hackathon, but it is worth noticing that the work in this hackathon contributes to that idea too.
+
+For this SWAT4HCLS hackathon we specifically had the following four tasks:
 
 * make the SPARQL endpoint configurable (e.g. support the Virtuoso instance)
 * allow configuring which aspects to show
-* mappings between Wikibase properties and classes with Wikidata equivalents (so that SPARQL can be in the "Wikidata language" but translated to the "Wikibase language" before being run)
 * extract mapping of Wikidata classes (Q-ids) to Scholia aspects into a config file
-* support endpoints with Wikidata subsets (see e.g. https://biohackrxiv.org/n7qku/)
-* record any other issues that involve running Scholia around another
+* mappings between Wikibase properties and classes with Wikidata equivalents (so that SPARQL can be in the "Wikidata language" but translated to the "Wikibase language" before being run)
+
+Where relevant, we will record any other issues that involve running Scholia around another.
 
 # Results
+
+The hackathon project was pitched in the morning. One person showed interest in Scholia and installation instructions
+were shared. For the hacking itself, it was only the authors of this paper that contributed to tangible results.
+These are described here.
 
 ## Task 1
 
