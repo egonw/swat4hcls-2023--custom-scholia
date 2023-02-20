@@ -2,7 +2,7 @@
 title: 'Hacking Scholia for custom SPARQL endpoints'
 title_short: 'Hacking Scholia for custom SPARQL endpoints'
 tags:
-  - wikidata
+  - Wikidata
 authors:
   - name: Egon Willighagen
     orcid: 0000-0001-7542-0286
@@ -61,7 +61,7 @@ These are described here.
 ## Task 1
 
 For the first task, reducing the number of times the URL of the SPARQL endpoint is explicitly given,
-we identified how it is used in various Python files. It turns out that a global constance in `query.py`
+we identified how it is used in various Python files. It turns out that a global constant in `query.py`
 can be reused in two other scripts, resulting in two patches:
 
 * [scholia/commit/20152877efed739abf4c433bd38e3646371d51aa](https://github.com/egonw/scholia/commit/20152877efed739abf4c433bd38e3646371d51aa)
@@ -131,7 +131,7 @@ Similarly, there is a method that looks at superclasses (via `P279` in Wikidata)
 items via one of the superclasses to the Scholia aspect. The intention of this task was to extract
 these mapping into a separate configurable mapping file.
 
-One aspect that this needs to take into account is that more specific aspects are prefered over more
+One aspect that this needs to take into account is that more specific aspects are preferred over more
 general aspects. For example, a chemical can be opened `topic` aspect but preferably in the `chemical`
 aspect.
 
